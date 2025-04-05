@@ -41,7 +41,6 @@ jobs:
       - name: Generate API Documentation
         working-directory: ./src
         run: |
-          mkdir -p docs/api
           php artisan scribe:generate
 
       - name: Setup Node.js
@@ -64,7 +63,7 @@ jobs:
       - name: Copy API docs
         run: |
           mkdir -p src/docs/.vitepress/dist/api
-          cp -r src/docs/api/* src/docs/.vitepress/dist/api/
+          cp -r src/public/docs/* src/docs/.vitepress/dist/api/ || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

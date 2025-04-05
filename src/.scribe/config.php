@@ -24,7 +24,7 @@ return [
 
     'type' => 'static',
     'static' => [
-        'output_path' => 'docs/api',
+        'output_path' => 'public/docs',
     ],
 
     'try_it_out' => [

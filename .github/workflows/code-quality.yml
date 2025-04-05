@@ -1,0 +1,39 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  php-code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        tools: phpcs, phpstan
+        
+    - name: Install Dependencies
+      working-directory: ./src
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      
+    - name: Check code style
+      working-directory: ./src
+      run: vendor/bin/pint --test
+      
+    - name: Run security check
+      working-directory: ./src
+      run: composer audit
+      
+    - name: Check for debugging code
+      run: |
+        ! grep -r "var_dump(" src/app
+        ! grep -r "dd(" src/app
+        ! grep -r "dump(" src/app
+        ! grep -r "ray(" src/app 

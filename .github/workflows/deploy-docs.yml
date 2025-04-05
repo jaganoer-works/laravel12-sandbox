@@ -51,8 +51,22 @@ jobs:
         working-directory: ./src/docs
         run: |
           npm init -y
+          npm pkg set type="module"
           npm install --save-dev vitepress
           mkdir -p .vitepress
+          cat > package.json << 'EOL'
+          {
+            "type": "module",
+            "scripts": {
+              "docs:dev": "vitepress dev",
+              "docs:build": "vitepress build",
+              "docs:preview": "vitepress preview"
+            },
+            "devDependencies": {
+              "vitepress": "^1.0.0"
+            }
+          }
+          EOL
           cat > .vitepress/config.js << 'EOL'
           import { defineConfig } from 'vitepress'
 
@@ -83,8 +97,7 @@ jobs:
       - name: Build VitePress site
         working-directory: ./src/docs
         run: |
-          npx vitepress build
-          cp -r .vitepress/dist/* .vitepress/dist/
+          npm run docs:build
           
       - name: Copy API docs
         run: |

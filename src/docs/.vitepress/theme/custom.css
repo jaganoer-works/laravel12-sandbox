@@ -1,0 +1,35 @@
+:root {
+  --vp-c-brand: #00acc1;
+  --vp-c-brand-light: #33c9dc;
+  --vp-c-brand-lighter: #5cd6e6;
+  --vp-c-brand-dark: #007c91;
+  --vp-c-brand-darker: #005c6b;
+}
+
+.vp-doc h1 {
+  font-size: 2.6em;
+  font-weight: 600;
+}
+
+.vp-doc h2 {
+  border-top: none;
+  margin-top: 2rem;
+}
+
+.vp-doc a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.vp-doc a:hover {
+  text-decoration: underline;
+}
+
+.vp-doc table {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+} 

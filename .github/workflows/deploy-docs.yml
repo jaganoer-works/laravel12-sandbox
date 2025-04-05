@@ -2,7 +2,7 @@ name: Deploy Documentation
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -26,7 +26,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: "8.2"
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
           coverage: none
 
@@ -45,22 +45,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
-      - name: Install VitePress
-        run: |
-          npm install -g vitepress
-          cd src/docs
-          npm init -y
-          npm install --save-dev vitepress
-
-      - name: Build VitePress site
+      - name: Setup VitePress
         working-directory: ./src/docs
         run: |
-          cat > .vitepress/config.js << EOL
-          export default {
+          npm init -y
+          npm install --save-dev vitepress
+          mkdir -p .vitepress
+          cat > .vitepress/config.js << 'EOL'
+          import { defineConfig } from 'vitepress'
+
+          export default defineConfig({
             title: 'Laravel 12 Sandbox',
             description: 'Technical documentation and API reference',
+            base: '/laravel12-sandbox/',
             themeConfig: {
               nav: [
                 { text: 'Home', link: '/' },
@@ -78,10 +77,15 @@ jobs:
                 }
               ]
             }
-          }
+          })
           EOL
-          npx vitepress build
 
+      - name: Build VitePress site
+        working-directory: ./src/docs
+        run: |
+          npx vitepress build
+          cp -r .vitepress/dist/* .vitepress/dist/
+          
       - name: Copy API docs
         run: |
           mkdir -p src/docs/.vitepress/dist/api
@@ -104,4 +108,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        uses: actions/deploy-pages@v4

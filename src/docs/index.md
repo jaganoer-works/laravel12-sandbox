@@ -8,6 +8,7 @@
 2. [アーキテクチャ](architecture.md)
 3. [APIリファレンス](api.md)
 4. [開発ガイドライン](guidelines.md)
+5. [トラブルシューティング](troubleshooting.md)
 
 ## プロジェクト概要
 

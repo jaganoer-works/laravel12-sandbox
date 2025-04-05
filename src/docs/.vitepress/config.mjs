@@ -10,7 +10,8 @@ export default defineConfig({
       { text: 'Setup', link: '/setup' },
       { text: 'Architecture', link: '/architecture' },
       { text: 'API', link: '/api' },
-      { text: 'Guidelines', link: '/guidelines' }
+      { text: 'Guidelines', link: '/guidelines' },
+      { text: 'Troubleshooting', link: '/troubleshooting' }
     ],
     sidebar: [
       {
@@ -19,7 +20,8 @@ export default defineConfig({
           { text: 'Setup', link: '/setup' },
           { text: 'Architecture', link: '/architecture' },
           { text: 'API Reference', link: '/api' },
-          { text: 'Guidelines', link: '/guidelines' }
+          { text: 'Guidelines', link: '/guidelines' },
+          { text: 'Troubleshooting', link: '/troubleshooting' }
         ]
       }
     ],

@@ -1,1 +1,0 @@
-import{_ as t,c as s,o as i,ae as e}from"./chunks/framework.Dh1jimFm.js";const k=JSON.parse('{"title":"環境構築ガイド","description":"","frontmatter":{},"headers":[],"relativePath":"setup.md","filePath":"setup.md"}'),l={name:"setup.md"};function d(h,a,o,n,r,p){return i(),s("div",null,a[0]||(a[0]=[e("",24)]))}const b=t(l,[["render",d]]);export{k as __pageData,b as default};

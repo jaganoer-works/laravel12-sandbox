@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ae as t}from"./chunks/framework.Dh1jimFm.js";const r=JSON.parse('{"title":"API仕様書","description":"","frontmatter":{},"headers":[],"relativePath":"api.md","filePath":"api.md"}'),l={name:"api.md"};function p(h,s,e,k,o,d){return n(),a("div",null,s[0]||(s[0]=[t("",49)]))}const g=i(l,[["render",p]]);export{r as __pageData,g as default};

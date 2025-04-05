@@ -3,7 +3,11 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Laravel 12 Sandbox',
   description: 'Laravel 12 Sandbox Documentation',
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: [
+    // 開発環境のローカルホストリンク
+    /^http:\/\/localhost/,
+    // その他の無視したいパターンを追加可能
+  ],
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },

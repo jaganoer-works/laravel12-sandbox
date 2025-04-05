@@ -1,9 +1,9 @@
 :root {
-  --vp-c-brand: #00acc1;
-  --vp-c-brand-light: #33c9dc;
-  --vp-c-brand-lighter: #5cd6e6;
-  --vp-c-brand-dark: #007c91;
-  --vp-c-brand-darker: #005c6b;
+  --vp-c-brand: #4f46e5;
+  --vp-c-brand-light: #6366f1;
+  --vp-c-brand-lighter: #818cf8;
+  --vp-c-brand-dark: #4338ca;
+  --vp-c-brand-darker: #3730a3;
 }
 
 .vp-doc h1 {
@@ -32,4 +32,36 @@
 
 .vp-doc tr:nth-child(2n) {
   background-color: var(--vp-c-bg-soft);
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 100%;
+}
+
+.VPDoc .content {
+  padding: 32px;
+  background-color: var(--vp-c-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.dark .VPDoc .content {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.VPNavBar.has-sidebar .content {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.VPSidebar {
+  padding: 32px 24px;
+}
+
+.VPNavBar {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.VPNavBar.has-sidebar {
+  border-bottom: none;
 } 

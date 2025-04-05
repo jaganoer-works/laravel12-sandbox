@@ -1,0 +1,14 @@
+{
+  "name": "laravel12-sandbox",
+  "version": "1.0.0",
+  "description": "Laravel 12 Sandbox Documentation",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev src/docs",
+    "docs:build": "vitepress build src/docs",
+    "docs:preview": "vitepress preview src/docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+} 

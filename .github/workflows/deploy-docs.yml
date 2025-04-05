@@ -53,7 +53,11 @@ jobs:
           npm init -y
           npm pkg set type="module"
           npm install --save-dev vitepress
-          mkdir -p .vitepress
+          
+          # Create necessary directories
+          mkdir -p .vitepress/theme
+          
+          # Create package.json
           cat > package.json << 'EOL'
           {
             "type": "module",
@@ -67,6 +71,8 @@ jobs:
             }
           }
           EOL
+          
+          # Create VitePress config
           cat > .vitepress/config.js << 'EOL'
           import { defineConfig } from 'vitepress'
 
@@ -92,6 +98,53 @@ jobs:
               ]
             }
           })
+          EOL
+          
+          # Create theme entry file
+          cat > .vitepress/theme/index.js << 'EOL'
+          import DefaultTheme from 'vitepress/theme'
+          import './custom.css'
+
+          export default DefaultTheme
+          EOL
+          
+          # Create custom CSS
+          cat > .vitepress/theme/custom.css << 'EOL'
+          :root {
+            --vp-c-brand: #00acc1;
+            --vp-c-brand-light: #33c9dc;
+            --vp-c-brand-lighter: #5cd6e6;
+            --vp-c-brand-dark: #007c91;
+            --vp-c-brand-darker: #005c6b;
+          }
+
+          .vp-doc h1 {
+            font-size: 2.6em;
+            font-weight: 600;
+          }
+
+          .vp-doc h2 {
+            border-top: none;
+            margin-top: 2rem;
+          }
+
+          .vp-doc a {
+            font-weight: 500;
+            text-decoration: none;
+          }
+
+          .vp-doc a:hover {
+            text-decoration: underline;
+          }
+
+          .vp-doc table {
+            width: 100%;
+            margin: 1em 0;
+          }
+
+          .vp-doc tr:nth-child(2n) {
+            background-color: var(--vp-c-bg-soft);
+          }
           EOL
 
       - name: Build VitePress site

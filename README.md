@@ -1,21 +1,21 @@
-# PHP Docker Template
+# Laravel 12 Docker Environment
 
-PHP 開発用の Docker 環境テンプレートです。WSL Ubuntu 環境での使用を想定しています。
+Laravel 12 開発用の Docker 環境です。M1/M2 Mac環境での使用を想定しています。
 
 ## 必要条件
 
 - Docker
 - Docker Compose
-- WSL2 (Ubuntu)
 - Git
+- macOS (M1/M2)
 
 ## セットアップ手順
 
 1. リポジトリのクローン
 
 ```bash
-git clone [repository-url]
-cd php-docker-template
+git clone https://github.com/jaganoer-works/laravel12-sandbox.git
+cd laravel12-sandbox
 ```
 
 2. 環境変数の設定
@@ -52,21 +52,38 @@ make ps
 | `make app`         | アプリケーションコンテナに接続 |
 | `make db`          | データベースコンテナに接続     |
 | `make cache-clear` | キャッシュのクリア             |
+| `make fresh`       | DBマイグレーションのリフレッシュ |
 
 ## 環境情報
 
-- PHP: [バージョン]
+- PHP: 8.2
+- Laravel: 12.x
 - MySQL: 8.0
 - Redis: latest
 - Nginx: 1.26-alpine
-- Mailhog: latest
+- Mailpit: latest (Mailhogの後継)
+- Xdebug: 3.x
 
 ## アクセス情報
 
 - Web アプリケーション: http://localhost:8080
-- Mailhog Web UI: http://localhost:8025
+- Mailpit Web UI: http://localhost:8025
 - MySQL: localhost:3306
 - Redis: localhost:6379
+
+## 開発環境の特徴
+
+1. Apple Silicon (M1/M2) 対応
+   - `platform: linux/arm64/v8` の設定により、ネイティブ実行が可能
+
+2. 開発支援ツール
+   - Xdebugによるデバッグ機能
+   - Mailpitによるメール送信テスト
+   - Redisによるキャッシュ管理
+
+3. データベース
+   - MySQL 8.0を採用
+   - 初期設定済みで即座に利用可能
 
 ## トラブルシューティング
 
@@ -92,11 +109,18 @@ make cache-clear
 make db
 ```
 
+4. ストレージ権限の問題
+
+```bash
+docker-compose exec app chmod -R 777 storage bootstrap/cache
+```
+
 ## 注意事項
 
 - `.env`ファイルは Git にプッシュしないでください
 - データベースのデータを保持したい場合は`make clean`は使用しないでください
 - 開発中は`make logs`でログを確認しながら作業することを推奨します
+- 本番環境では適切なセキュリティ設定を行ってください
 
 ## ライセンス
 

@@ -25,4 +25,11 @@ Laravel 12を使用したサンドボックス環境です。以下の特徴が�
 - MySQL 8.0
 - Redis
 - Nginx
-- Docker 
+- Docker
+
+## 開発環境
+
+- メインアプリケーション: [http://localhost:8080](http://localhost:8080)
+- メールサーバー（Mailpit）: [http://localhost:8025](http://localhost:8025)
+- PHPMyAdmin: [http://localhost:8081](http://localhost:8081)
+- Redis Commander: [http://localhost:8082](http://localhost:8082) 

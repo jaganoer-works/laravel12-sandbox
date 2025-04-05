@@ -30,7 +30,14 @@ Laravel 12を使用したサンドボックス環境です。以下の特徴が�
 
 ## 開発環境
 
+以下のURLは、ローカル開発環境でのみアクセス可能です：
+
 - メインアプリケーション: [http://localhost:8080](http://localhost:8080)
 - メールサーバー（Mailpit）: [http://localhost:8025](http://localhost:8025)
 - PHPMyAdmin: [http://localhost:8081](http://localhost:8081)
-- Redis Commander: [http://localhost:8082](http://localhost:8082) 
+- Redis Commander: [http://localhost:8082](http://localhost:8082)
+
+::: warning 注意
+これらのURLは、Dockerコンテナが起動している状態でのみアクセス可能です。
+コンテナの起動方法については、[環境構築](setup.md)を参照してください。
+::: 
